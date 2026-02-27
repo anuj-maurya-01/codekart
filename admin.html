@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - CodeKart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <span>&#128187;</span> Code<span>Kart</span>
+        </a>
+        <div class="header-actions">
+          <a href="index.html">View Site</a>
+          <a href="cart.html" class="cart-icon">
+            <span>&#128722;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Section -->
+  <section class="admin-section">
+    <div class="container">
+      <div class="admin-grid">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+          <div class="user-profile">
+            <div class="user-avatar">A</div>
+            <h3>Admin</h3>
+            <p>Administrator</p>
+          </div>
+          
+          <div class="dashboard-menu">
+            <a href="#" class="active" onclick="showAdminSection('overview')">&#128200; Overview</a>
+            <a href="#" onclick="showAdminSection('orders')">&#128230; Manage Orders</a>
+            <a href="manage-products.html">&#128230; Manage Products</a>
+            <a href="#" onclick="showAdminSection('payment')">&#128179; Payment Settings</a>
+            <a href="index.html">&#128240; View Site</a>
+          </div>
+          
+          <button class="logout-btn" id="admin-logout-btn">&#128682; Logout</button>
+        </div>
+        
+        <!-- Content -->
+        <div class="admin-content" id="admin-content">
+          <div class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-secondary" onclick="resetProducts()">&#8635; Reset Products</button>
+              <button class="btn btn-primary" onclick="showProductForm()">&#43; Add Product</button>
+            </div>
+          </div>
+          
+          <!-- Overview -->
+          <div id="admin-overview">
+            <div id="admin-stats">
+              <!-- Stats will be loaded dynamically -->
+            </div>
+          </div>
+          
+          <!-- Orders Section -->
+          <div id="admin-orders-section" style="display: none;">
+            <h2 style="margin-bottom: 20px;">All Orders</h2>
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-orders-body">
+                  <!-- Orders will be loaded dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Products Section -->
+          <div id="admin-products-section" style="display: none;">
+            <h2 style="margin-bottom: 20px;">All Products</h2>
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Tech Stack</th>
+                    <th>Price</th>
+                    <th>Difficulty</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-products-body">
+                  <!-- Products will be loaded dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Payment Settings Section -->
+          <div id="admin-payment-section" style="display: none;">
+            <h2 style="margin-bottom: 20px;">Payment Settings</h2>
+            <div class="contact-card" style="max-width: 600px;">
+              <p style="margin-bottom: 20px;">Upload your QR code for UPI/Payment. Customers will see this on the checkout page to make payments.</p>
+              
+              <div class="form-group">
+                <label>Current Payment QR Code</label>
+                <div id="current-qr-preview" style="margin: 15px 0;">
+                  <img id="qr-preview-img" src="" alt="QR Code" style="max-width: 200px; border-radius: 8px; display: none;">
+                  <p id="no-qr-msg" style="color: var(--gray);">No QR code uploaded yet</p>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="payment-qr-upload">Upload New QR Code</label>
+                <input type="file" id="payment-qr-upload" accept="image/*">
+                <small style="color: var(--gray);">Recommended: Square QR code image, max 500KB</small>
+              </div>
+              
+              <div class="form-group">
+                <label for="payment-upi-id">UPI ID (Optional)</label>
+                <input type="text" id="payment-upi-id" placeholder="yourname@upi">
+              </div>
+              
+              <button type="button" class="btn btn-primary" onclick="savePaymentSettings()">&#128190; Save Payment Settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 CodeKart. All rights reserved. | <a href="privacy-policy.html" style="color: #ddd;">Privacy Policy</a> | <a href="terms.html" style="color: #ddd;">Terms of Service</a> | <a href="contact.html" style="color: #ddd;">Contact Us</a> | <a href="faq.html" style="color: #ddd;">FAQ</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    // Show admin section
+    function showAdminSection(section) {
+      document.getElementById('admin-overview').style.display = section === 'overview' ? 'block' : 'none';
+      document.getElementById('admin-orders-section').style.display = section === 'orders' ? 'block' : 'none';
+      document.getElementById('admin-products-section').style.display = section === 'products' ? 'block' : 'none';
+      document.getElementById('admin-payment-section').style.display = section === 'payment' ? 'block' : 'none';
+      
+      if (section === 'payment') {
+        loadPaymentSettings();
+      }
+      
+      // Update active menu item
+      document.querySelectorAll('.admin-sidebar .dashboard-menu a').forEach(link => {
+        link.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

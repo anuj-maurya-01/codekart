@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Products - CodeKart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+  <style>
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .page-header h1 {
+      margin: 0;
+    }
+    .table-container {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <span>&#128187;</span> Code<span>Kart</span>
+        </a>
+        <div class="header-actions">
+          <a href="index.html">View Site</a>
+          <a href="admin.html">Admin Panel</a>
+          <a href="cart.html" class="cart-icon">
+            <span>&#128722;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Manage Products Section -->
+  <section class="admin-section">
+    <div class="container">
+      <div class="page-header">
+        <h1>Manage Products</h1>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button class="btn btn-secondary" onclick="resetToDefault()">&#8635; Reset to Default</button>
+          <button class="btn btn-primary" id="add-product-btn">&#43; Add New Product</button>
+        </div>
+      </div>
+
+      <!-- Products Table -->
+      <div class="table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="products-table-body">
+            <!-- Products will be loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="empty-state" style="display: none;">
+        <div class="empty-state-icon">&#128230;</div>
+        <h3>No Products Found</h3>
+        <p>Add your first product to get started.</p>
+        <button class="btn btn-primary" id="add-product-btn-2">&#43; Add Product</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal" style="max-width: 700px; max-height: 90vh; overflow-y: auto;">
+      <div class="modal-header">
+        <h2 id="modal-title">Add New Product</h2>
+        <button class="modal-close" id="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="product-form">
+          <input type="hidden" id="product-id">
+          
+          <div class="form-group">
+            <label for="product-title">Product Title *</label>
+            <input type="text" id="product-title" required placeholder="Enter product title">
+          </div>
+          
+          <div class="form-group">
+            <label for="product-description">Description *</label>
+            <textarea id="product-description" required placeholder="Enter product description" rows="4"></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="product-price">Price (₹) *</label>
+              <input type="number" id="product-price" step="0.01" min="0" required placeholder="0.00">
+            </div>
+            <div class="form-group">
+              <label for="product-difficulty">Difficulty *</label>
+              <select id="product-difficulty" required>
+                <option value="">Select difficulty</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="product-thumbnail">Product Image URL</label>
+            <input type="url" id="product-thumbnail" placeholder="https://example.com/image.jpg">
+            <small style="color: var(--gray);">Or upload an image below:</small>
+            <input type="file" id="product-image-upload" accept="image/*" style="margin-top: 5px;">
+            <div id="image-preview" style="margin-top: 10px;"></div>
+          </div>
+          
+          <div class="form-group">
+            <label for="product-tech">Tech Stack (comma separated)</label>
+            <input type="text" id="product-tech" placeholder="HTML, CSS, JavaScript, React">
+          </div>
+          
+          <div class="form-group">
+            <label for="product-delivery">Delivery Type</label>
+            <select id="product-delivery">
+              <option value="Instant Download">Instant Download</option>
+              <option value="Email Delivery">Email Delivery</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="product-features">Features (one per line)</label>
+            <textarea id="product-features" rows="4" placeholder="Responsive design&#10;Clean code&#10;Documentation included"></textarea>
+          </div>
+          
+          <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button type="submit" class="btn btn-primary">Save Product</button>
+            <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script>
+    // Global functions
+    var currentEditingId = null;
+
+    // Load products on page load
+    document.addEventListener('DOMContentLoaded', async function() {
+      await loadProducts();
+      renderProductsTable();
+      setupEventListeners();
+    });
+
+    function setupEventListeners() {
+      // Add product button
+      document.getElementById('add-product-btn').addEventListener('click', function() {
+        openProductModal();
+      });
+      
+      document.getElementById('add-product-btn-2').addEventListener('click', function() {
+        openProductModal();
+      });
+      
+      // Close modal button
+      document.getElementById('modal-close-btn').addEventListener('click', function() {
+        closeProductModal();
+      });
+      
+      // Cancel button
+      document.getElementById('cancel-btn').addEventListener('click', function() {
+        closeProductModal();
+      });
+      
+      // Close on outside click
+      document.getElementById('product-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeProductModal();
+        }
+      });
+      
+      // Form submission
+      document.getElementById('product-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        saveProduct();
+      });
+      
+      // Image upload
+      document.getElementById('product-image-upload').addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function(event) {
+            document.getElementById('product-thumbnail').value = event.target.result;
+            document.getElementById('image-preview').innerHTML = '<img src="' + event.target.result + '" alt="Preview" style="max-width: 200px; border-radius: 8px;">';
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+      
+      // Thumbnail URL input
+      document.getElementById('product-thumbnail').addEventListener('input', function(e) {
+        if (e.target.value) {
+          document.getElementById('image-preview').innerHTML = '<img src="' + e.target.value + '" alt="Preview" style="max-width: 200px; border-radius: 8px;" onerror="this.style.display=\'none\'">';
+        }
+      });
+    }
+
+    // Render products table
+    function renderProductsTable() {
+      var products = getAllProducts();
+      var tbody = document.getElementById('products-table-body');
+      var emptyState = document.getElementById('empty-state');
+      
+      if (!products || products.length === 0) {
+        tbody.innerHTML = '';
+        emptyState.style.display = 'flex';
+        return;
+      }
+      
+      emptyState.style.display = 'none';
+      
+      var html = '';
+      for (var i = 0; i < products.length; i++) {
+        var product = products[i];
+        var techStack = product.techStack ? product.techStack.slice(0, 2).join(', ') : '';
+        var desc = product.description ? product.description.substring(0, 50) : '';
+        
+        html += '<tr>';
+        html += '<td><img src="' + product.thumbnail + '" alt="' + product.title + '" style="width: 60px; height: 45px; object-fit: cover; border-radius: 5px;" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>\'"></td>';
+        html += '<td><strong>' + product.title + '</strong><br><small style="color: var(--gray);">' + desc + '...</small></td>';
+        html += '<td>' + techStack + '</td>';
+        html += '<td>' + CodeKart.formatCurrency(product.price) + '</td>';
+        html += '<td><span class="status-badge status-' + (product.difficulty ? product.difficulty.toLowerCase() : 'beginner') + '">' + product.difficulty + '</span></td>';
+        html += '<td><div class="table-actions"><button class="table-action-btn edit" onclick="editProduct(' + product.id + ')">Edit</button><button class="table-action-btn delete" onclick="deleteProductHandler(' + product.id + ')">Delete</button></div></td>';
+        html += '</tr>';
+      }
+      
+      tbody.innerHTML = html;
+    }
+
+    // Open product modal
+    function openProductModal(product) {
+      var isEdit = product != null;
+      currentEditingId = isEdit ? product.id : null;
+      
+      document.getElementById('modal-title').textContent = isEdit ? 'Edit Product' : 'Add New Product';
+      document.getElementById('product-id').value = isEdit ? product.id : '';
+      document.getElementById('product-title').value = isEdit ? product.title : '';
+      document.getElementById('product-description').value = isEdit ? product.description : '';
+      document.getElementById('product-price').value = isEdit ? product.price : '';
+      document.getElementById('product-difficulty').value = isEdit ? product.difficulty : '';
+      document.getElementById('product-thumbnail').value = isEdit ? product.thumbnail : '';
+      document.getElementById('product-tech').value = isEdit && product.techStack ? product.techStack.join(', ') : '';
+      document.getElementById('product-delivery').value = isEdit && product.deliveryType ? product.deliveryType : 'Instant Download';
+      document.getElementById('product-features').value = isEdit && product.features ? product.features.join('\n') : '';
+      
+      var imagePreview = document.getElementById('image-preview');
+      if (isEdit && product.thumbnail) {
+        imagePreview.innerHTML = '<img src="' + product.thumbnail + '" alt="Preview" style="max-width: 200px; border-radius: 8px;">';
+      } else {
+        imagePreview.innerHTML = '';
+      }
+      
+      document.getElementById('product-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close product modal
+    function closeProductModal() {
+      document.getElementById('product-modal').classList.remove('active');
+      document.body.style.overflow = '';
+      document.getElementById('product-form').reset();
+      document.getElementById('image-preview').innerHTML = '';
+      currentEditingId = null;
+    }
+
+    // Edit product
+    function editProduct(productId) {
+      var products = getAllProducts();
+      var product = null;
+      for (var i = 0; i < products.length; i++) {
+        if (products[i].id === productId) {
+          product = products[i];
+          break;
+        }
+      }
+      if (product) {
+        openProductModal(product);
+      }
+    }
+
+    // Delete product
+    function deleteProductHandler(productId) {
+      if (confirm('Are you sure you want to delete this product?')) {
+        deleteProduct(productId);
+        CodeKart.showToast('Product deleted successfully', 'success');
+        renderProductsTable();
+      }
+    }
+
+    // Reset to default
+    async function resetToDefault() {
+      if (confirm('Are you sure you want to reset all products to default? All custom products will be lost.')) {
+        await resetProductsToDefault();
+        renderProductsTable();
+        CodeKart.showToast('Products reset to default', 'success');
+      }
+    }
+
+    // Save product (add or update)
+    function saveProduct() {
+      var productId = document.getElementById('product-id').value;
+      var title = document.getElementById('product-title').value.trim();
+      var description = document.getElementById('product-description').value.trim();
+      var price = parseFloat(document.getElementById('product-price').value);
+      var difficulty = document.getElementById('product-difficulty').value;
+      var thumbnail = document.getElementById('product-thumbnail').value.trim();
+      var techInput = document.getElementById('product-tech').value;
+      var deliveryType = document.getElementById('product-delivery').value;
+      var featuresInput = document.getElementById('product-features').value;
+      
+      // Use default placeholder if no image
+      if (!thumbnail) {
+        thumbnail = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>';
+      }
+      
+      var techStack = techInput ? techInput.split(',').map(function(t) { return t.trim(); }) : ['HTML', 'CSS', 'JavaScript'];
+      var features = featuresInput ? featuresInput.split('\n').map(function(f) { return f.trim(); }).filter(function(f) { return f; }) : ['Responsive design', 'Clean code', 'Documentation included'];
+      
+      var productData = {
+        title: title,
+        description: description,
+        price: price,
+        difficulty: difficulty,
+        thumbnail: thumbnail,
+        techStack: techStack,
+        deliveryType: deliveryType,
+        features: features,
+        gallery: [thumbnail]
+      };
+      
+      if (productId) {
+        // Update existing product
+        updateProduct(productId, productData);
+        CodeKart.showToast('Product updated successfully', 'success');
+      } else {
+        // Add new product
+        addProduct(productData);
+        CodeKart.showToast('Product added successfully', 'success');
+      }
+      
+      closeProductModal();
+      renderProductsTable();
+    }
+  </script>
+</body>
+</html>

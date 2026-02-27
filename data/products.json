@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "title": "E-Commerce Website Template",
+    "description": "A complete, ready-to-use e-commerce website with product listings, shopping cart, checkout functionality, and admin panel. Perfect for building your online store.",
+    "techStack": ["HTML", "CSS", "JavaScript", "LocalStorage"],
+    "difficulty": "Intermediate",
+    "price": 49.99,
+    "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
+      "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Responsive design",
+      "Product filtering",
+      "Search functionality",
+      "Shopping cart",
+      "Checkout form",
+      "Admin dashboard"
+    ],
+    "rating": 4.8,
+    "reviews": 124,
+    "sales": 520
+  },
+  {
+    "id": 2,
+    "title": "Portfolio Website Template",
+    "description": "A modern, sleek portfolio website template for developers and designers. Features animated sections, contact form, and project showcase.",
+    "techStack": ["HTML", "CSS", "JavaScript", "GSAP"],
+    "difficulty": "Beginner",
+    "price": 29.99,
+    "thumbnail": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Animated hero section",
+      "Project gallery",
+      "Contact form",
+      "Responsive layout",
+      "Dark/Light mode"
+    ],
+    "rating": 4.9,
+    "reviews": 89,
+    "sales": 340
+  },
+  {
+    "id": 3,
+    "title": "Task Management App",
+    "description": "A full-featured task management application with drag-and-drop functionality, due dates, categories, and local storage persistence.",
+    "techStack": ["HTML", "CSS", "JavaScript", "LocalStorage", "Drag & Drop"],
+    "difficulty": "Advanced",
+    "price": 79.99,
+    "thumbnail": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800",
+      "https://images.unsplash.com/photo-1517842645767-c639042777db?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Drag and drop tasks",
+      "Due date tracking",
+      "Category management",
+      "Progress tracking",
+      "Export to JSON"
+    ],
+    "rating": 4.7,
+    "reviews": 56,
+    "sales": 180
+  },
+  {
+    "id": 4,
+    "title": "Weather Dashboard",
+    "description": "A beautiful weather dashboard with real-time data, forecasts, and location-based information. Uses OpenWeatherMap API.",
+    "techStack": ["HTML", "CSS", "JavaScript", "API"],
+    "difficulty": "Intermediate",
+    "price": 34.99,
+    "thumbnail": "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Real-time weather",
+      "7-day forecast",
+      "Location search",
+      "Weather animations",
+      "Unit conversion"
+    ],
+    "rating": 4.6,
+    "reviews": 78,
+    "sales": 290
+  },
+  {
+    "id": 5,
+    "title": "Social Media Dashboard",
+    "description": "A comprehensive social media analytics dashboard with charts, statistics, and performance metrics visualization.",
+    "techStack": ["HTML", "CSS", "JavaScript", "Chart.js"],
+    "difficulty": "Intermediate",
+    "price": 59.99,
+    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Analytics charts",
+      "Performance metrics",
+      "Dark mode",
+      "Export reports",
+      "Responsive design"
+    ],
+    "rating": 4.8,
+    "reviews": 45,
+    "sales": 150
+  },
+  {
+    "id": 6,
+    "title": "Chat Application",
+    "description": "A real-time chat application with user authentication, message history, online status, and modern UI.",
+    "techStack": ["HTML", "CSS", "JavaScript", "LocalStorage", "WebSocket Simulation"],
+    "difficulty": "Advanced",
+    "price": 89.99,
+    "thumbnail": "https://images.unsplash.com/photo-1611746872915-64382b5c2b36?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1611746872915-64382b5c2b36?w=800",
+      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "User authentication",
+      "Message history",
+      "Online status",
+      "Emoji support",
+      "Message notifications"
+    ],
+    "rating": 4.9,
+    "reviews": 67,
+    "sales": 210
+  },
+  {
+    "id": 7,
+    "title": "Restaurant Website",
+    "description": "A beautiful restaurant website with online reservation, menu display, gallery, and contact form.",
+    "techStack": ["HTML", "CSS", "JavaScript"],
+    "difficulty": "Beginner",
+    "price": 24.99,
+    "thumbnail": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Online reservations",
+      "Menu display",
+      "Photo gallery",
+      "Contact form",
+      "Mobile responsive"
+    ],
+    "rating": 4.7,
+    "reviews": 112,
+    "sales": 480
+  },
+  {
+    "id": 8,
+    "title": "Online Learning Platform",
+    "description": "A complete online learning platform with course listings, video player, progress tracking, and user dashboard.",
+    "techStack": ["HTML", "CSS", "JavaScript", "LocalStorage", "Video.js"],
+    "difficulty": "Advanced",
+    "price": 99.99,
+    "thumbnail": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800",
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Course catalog",
+      "Video player",
+      "Progress tracking",
+      "User dashboard",
+      "Certificates"
+    ],
+    "rating": 4.8,
+    "reviews": 34,
+    "sales": 95
+  },
+  {
+    "id": 9,
+    "title": "Fitness Tracker App",
+    "description": "A fitness tracking application with workout logging, progress charts, goal setting, and workout reminders.",
+    "techStack": ["HTML", "CSS", "JavaScript", "LocalStorage", "Chart.js"],
+    "difficulty": "Intermediate",
+    "price": 44.99,
+    "thumbnail": "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800",
+      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Workout logging",
+      "Progress charts",
+      "Goal setting",
+      "Calorie tracking",
+      "Exercise library"
+    ],
+    "rating": 4.6,
+    "reviews": 58,
+    "sales": 175
+  },
+  {
+    "id": 10,
+    "title": "Blog Platform",
+    "description": "A fully functional blog platform with markdown support, categories, search, and comment system.",
+    "techStack": ["HTML", "CSS", "JavaScript", "LocalStorage", "Markdown"],
+    "difficulty": "Intermediate",
+    "price": 39.99,
+    "thumbnail": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800",
+      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Markdown support",
+      "Categories",
+      "Search functionality",
+      "Comment system",
+      "Author profiles"
+    ],
+    "rating": 4.7,
+    "reviews": 82,
+    "sales": 310
+  },
+  {
+    "id": 11,
+    "title": "Music Player",
+    "description": "A modern music player with playlist management, audio visualization, and custom themes.",
+    "techStack": ["HTML", "CSS", "JavaScript", "Web Audio API"],
+    "difficulty": "Advanced",
+    "price": 54.99,
+    "thumbnail": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800",
+      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Playlist management",
+      "Audio visualization",
+      "Custom themes",
+      "Equalizer",
+      "Lyrics display"
+    ],
+    "rating": 4.8,
+    "reviews": 49,
+    "sales": 145
+  },
+  {
+    "id": 12,
+    "title": "Job Board Portal",
+    "description": "A comprehensive job board with job listings, company profiles, application tracking, and resume upload.",
+    "techStack": ["HTML", "CSS", "JavaScript", "LocalStorage"],
+    "difficulty": "Intermediate",
+    "price": 69.99,
+    "thumbnail": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400",
+    "gallery": [
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800",
+      "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800"
+    ],
+    "deliveryType": "Instant Download",
+    "features": [
+      "Job listings",
+      "Company profiles",
+      "Application tracking",
+      "Resume upload",
+      "Email notifications"
+    ],
+    "rating": 4.5,
+    "reviews": 38,
+    "sales": 120
+  }
+]

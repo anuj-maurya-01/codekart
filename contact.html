@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - CodeKart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <span>Need help? Contact us: anujmaurya1004gmail.com</span>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <span>💻</span> Code<span>Kart</span>
+        </a>
+        
+        <button class="mobile-menu-btn">☰</button>
+        
+        <form class="search-bar" id="search-form">
+          <input type="text" id="header-search" placeholder="Search projects, technologies...">
+          <button type="submit">🔍</button>
+        </form>
+        
+        <div class="header-actions">
+          <a href="login.html" id="login-link">
+            <span>👤</span> Login
+          </a>
+          <a href="signup.html" id="signup-link">
+            <span>📝</span> Sign Up
+          </a>
+          <div id="user-menu" style="display: none;">
+            <a href="dashboard.html">
+              <span>👤</span> <span class="user-name">Dashboard</span>
+            </a>
+          </div>
+          <a href="cart.html" class="cart-icon">
+            <span>🛒</span>
+            <span class="cart-badge" style="display: none;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <button class="mobile-close-btn">✕</button>
+      <div class="container">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Projects</a></li>
+          <li class="category-dropdown">
+            <a href="#">Categories ▾</a>
+            <div class="category-menu">
+              <a href="products.html?category=E-Commerce">E-Commerce</a>
+              <a href="products.html?category=Portfolio">Portfolio</a>
+              <a href="products.html?category=Dashboard">Dashboard</a>
+              <a href="products.html?category=Social">Social</a>
+              <a href="products.html?category=Productivity">Productivity</a>
+            </div>
+          </li>
+          <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+        <a href="products.html" class="btn btn-primary btn-sm">Browse All Projects</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Contact Us</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section">
+    <div class="container">
+      <p class="section-subtitle" style="text-align: center; color: var(--gray); margin-bottom: 40px;">We'd love to hear from you! Send us a message and we'll respond as soon as possible.</p>
+      
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <span class="contact-icon">✉️</span>
+              <h2>Send us a Message</h2>
+            </div>
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" required placeholder="Enter your name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" required>
+                  <option value="">Select a topic</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="support">Technical Support</option>
+                  <option value="billing">Billing & Payments</option>
+                  <option value="refund">Refund Request</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" required placeholder="How can we help you?"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <span>📤</span> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info-container">
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <span class="contact-icon">📞</span>
+              <h2>Get in Touch</h2>
+            </div>
+            
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📍</div>
+              <div class="contact-info-content">
+                <h4>Visit Us</h4>
+                <p>CodeKart Technologies Pvt Ltd<br>Shantipuram, Phaphamau<br>Prayagraj, Uttar Pradesh<br>India - 211013</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📧</div>
+              <div class="contact-info-content">
+                <h4>Email Us</h4>
+                <p>support@codekart.com<br>sales@codekart.com</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📱</div>
+              <div class="contact-info-content">
+                <h4>Call Us</h4>
+                <p>+91 9532156562<br>+91 9876543210</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">🕐</div>
+              <div class="contact-info-content">
+                <h4>Business Hours</h4>
+                <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <span class="contact-icon">🌐</span>
+              <h2>Follow Us</h2>
+            </div>
+            <div class="social-links">
+              <a href="https://instagram.com" target="_blank" class="social-link instagram">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+              </a>
+              <a href="https://linkedin.com" target="_blank" class="social-link linkedin">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+              </a>
+              <a href="https://github.com" target="_blank" class="social-link github">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+              </a>
+              <a href="https://twitter.com" target="_blank" class="social-link twitter">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Section -->
+      <div class="map-container">
+        <div class="contact-card">
+          <div class="contact-card-header">
+            <span class="contact-icon">🗺️</span>
+            <h2>Find Us on Map</h2>
+          </div>
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.237894453092!2d81.8694448!3d25.4358018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39854c5a1e7e7c7f%3A0x6c6c6c6c6c6c6c6c6!2sShantipuram%2C%20Phaphamau%2C%20Prayagraj%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="350" 
+            style="border:0; border-radius: 8px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- FAQ Link -->
+      <div class="faq-cta">
+        <div class="contact-card">
+          <h3>Have a Quick Question?</h3>
+          <p>Check our FAQ section for answers to commonly asked questions.</p>
+          <a href="faq.html" class="btn btn-outline">
+            <span>❓</span> View FAQ
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span>💻</span> Code<span>Kart</span>
+          </a>
+          <p>Your one-stop shop for ready-made coding projects.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li>📧 support@codekart.com</li>
+            <li>📱 +91 9532156562</li>
+            <li>📍 Shantipuram, Phaphamau, Prayagraj, UP, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CodeKart. All rights reserved. | <a href="privacy-policy.html" style="color: #ddd;">Privacy Policy</a> | <a href="terms.html" style="color: #ddd;">Terms of Service</a> | <a href="contact.html" style="color: #ddd;">Contact Us</a> | <a href="faq.html" style="color: #ddd;">FAQ</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" style="display: none;">
+    <span class="toast-icon">✅</span>
+    <span class="toast-message">Message sent successfully!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // Show success toast
+      const toast = document.getElementById('toast');
+      toast.innerHTML = '<span class="toast-icon">✅</span><span class="toast-message">Thank you ' + name + '! We will respond to ' + email + ' soon.</span>';
+      toast.style.display = 'flex';
+      
+      // Reset form
+      document.getElementById('contact-form').reset();
+      
+      // Hide toast after 5 seconds
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

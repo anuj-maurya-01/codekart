@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard - CodeKart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <span>&#128187;</span> Code<span>Kart</span>
+        </a>
+        <div class="header-actions">
+          <a href="products.html">Browse Projects</a>
+          <a href="cart.html" class="cart-icon">
+            <span>&#128722;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Section -->
+  <section class="dashboard-section">
+    <div class="container">
+      <div class="dashboard-grid">
+        <!-- Sidebar -->
+        <div class="dashboard-sidebar">
+          <div class="user-profile">
+            <div class="user-avatar" id="user-avatar">U</div>
+            <h3 id="user-name">User</h3>
+            <p id="user-email">user@email.com</p>
+          </div>
+          
+          <div class="dashboard-menu">
+            <a href="dashboard.html" class="active">&#128200; My Orders</a>
+            <a href="index.html">&#128240; Browse Projects</a>
+            <a href="cart.html">&#128722; My Cart</a>
+          </div>
+          
+          <button class="logout-btn" id="logout-btn">&#128682; Logout</button>
+        </div>
+        
+        <!-- Content -->
+        <div class="dashboard-content" id="dashboard-content">
+          <div class="dashboard-header">
+            <h1>My Orders</h1>
+            <a href="products.html" class="btn btn-primary">Browse More Projects</a>
+          </div>
+          
+          <!-- Stats -->
+          <div id="user-stats">
+            <!-- Stats will be loaded dynamically -->
+          </div>
+          
+          <!-- Orders Table -->
+          <h2 style="margin-bottom: 20px;">Order History</h2>
+          <div style="overflow-x: auto;">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-body">
+                <!-- Orders will be loaded dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>&copy; 2024 CodeKart. All rights reserved. | <a href="privacy-policy.html" style="color: #ddd;">Privacy Policy</a> | <a href="terms.html" style="color: #ddd;">Terms of Service</a> | <a href="contact.html" style="color: #ddd;">Contact Us</a> | <a href="faq.html" style="color: #ddd;">FAQ</a></p>
+    </div>
+  </footer>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2024 CodeKart. All rights reserved. | <a href="privacy-policy.html" style="color: #ddd;">Privacy Policy</a> | <a href="terms.html" style="color: #ddd;">Terms of Service</a> | <a href="contact.html" style="color: #ddd;">Contact Us</a> | <a href="faq.html" style="color: #ddd;">FAQ</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

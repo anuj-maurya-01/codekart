@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - CodeKart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <span>Need help? Contact us: anujmaurya1004@gmail.com</span>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <span>&#128187;</span> Code<span>Kart</span>
+        </a>
+        
+        <button class="mobile-menu-btn">&#9776;</button>
+        
+        <form class="search-bar" id="search-form">
+          <input type="text" id="header-search" placeholder="Search projects, technologies...">
+          <button type="submit">&#128269;</button>
+        </form>
+        
+        <div class="header-actions">
+          <a href="login.html" id="login-link">
+            <span>&#128100;</span> Login
+          </a>
+          <a href="signup.html" id="signup-link">
+            <span>&#128221;</span> Sign Up
+          </a>
+          <div id="user-menu" style="display: none;">
+            <a href="dashboard.html">
+              <span>&#128100;</span> <span class="user-name">Dashboard</span>
+            </a>
+          </div>
+          <a href="cart.html" class="cart-icon">
+            <span>&#128722;</span>
+            <span class="cart-badge" style="display: none;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <button class="mobile-close-btn">&times;</button>
+      <div class="container">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Projects</a></li>
+        </ul>
+        <a href="products.html" class="btn btn-primary btn-sm">Browse All Projects</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Product Detail -->
+  <section class="product-detail">
+    <div class="container">
+      <div class="breadcrumb" style="margin-bottom: 30px;">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="products.html">Projects</a>
+        <span>/</span>
+        <span id="product-breadcrumb">Product Details</span>
+      </div>
+      
+      <div class="product-detail-grid" id="product-detail-container">
+        <!-- Product details will be loaded dynamically -->
+        <div>
+          <div class="skeleton skeleton-image" style="height: 400px;"></div>
+        </div>
+        <div>
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-text" style="width: 80%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span>&#128187;</span> Code<span>Kart</span>
+          </a>
+          <p>Your one-stop shop for ready-made coding projects.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li>&#128231; anujmaurya1004@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CodeKart. All rights reserved. | <a href="privacy-policy.html" style="color: #ddd;">Privacy Policy</a> | <a href="terms.html" style="color: #ddd;">Terms of Service</a> | <a href="contact.html" style="color: #ddd;">Contact Us</a> | <a href="faq.html" style="color: #ddd;">FAQ</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Load product details
+    document.addEventListener('DOMContentLoaded', async function() {
+      const productId = CodeKart.getUrlParam('id');
+      
+      if (!productId) {
+        window.location.href = 'products.html';
+        return;
+      }
+      
+      await loadProducts();
+      const product = getProductById(productId);
+      
+      if (!product) {
+        CodeKart.showToast('Product not found', 'error');
+        setTimeout(() => {
+          window.location.href = 'products.html';
+        }, 1500);
+        return;
+      }
+      
+      // Update page title
+      document.title = `${product.title} - CodeKart`;
+      document.getElementById('product-breadcrumb').textContent = product.title;
+      
+      // Render product details
+      const container = document.getElementById('product-detail-container');
+      container.innerHTML = `
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="${product.thumbnail}" alt="${product.title}" id="main-image">
+          </div>
+          <div class="product-thumbnails">
+            ${product.gallery ? product.gallery.map((img, index) => `
+              <div class="product-thumbnail ${index === 0 ? 'active' : ''}" onclick="changeImage('${img}')">
+                <img src="${img}" alt="${product.title}">
+              </div>
+            `).join('') : `
+              <div class="product-thumbnail active" onclick="changeImage('${product.thumbnail}')">
+                <img src="${product.thumbnail}" alt="${product.title}">
+              </div>
+            `}
+          </div>
+        </div>
+        
+        <div class="product-info">
+          <div class="product-tech">
+            ${product.techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+          </div>
+          
+          <h1>${product.title}</h1>
+          
+          <div class="product-meta-info">
+            <span>&#128293; ${product.difficulty}</span>
+            <span>&#128197; ${product.deliveryType}</span>
+            <span class="product-rating">&#9733; ${product.rating} (${product.reviews} reviews)</span>
+          </div>
+          
+          <div class="product-price-large">${CodeKart.formatCurrency(product.price)}</div>
+          
+          <p class="product-description">${product.description}</p>
+          
+          <div class="product-features-list">
+            <h3>What's Included:</h3>
+            <ul>
+              ${product.features ? product.features.map(f => `<li>${f}</li>`).join('') : `
+                <li>Complete source code</li>
+                <li>Documentation</li>
+                <li>Responsive design</li>
+                <li>Free updates</li>
+              `}
+            </ul>
+          </div>
+          
+          <div class="product-actions-detail">
+            <button class="btn btn-primary btn-lg" onclick="addToCart(${product.id})">
+              &#128722; Add to Cart
+            </button>
+            <a href="products.html" class="btn btn-outline btn-lg">Continue Shopping</a>
+          </div>
+          
+          <div style="margin-top: 20px; padding: 15px; background: var(--gray-light); border-radius: 8px;">
+            
+          </div>
+        </div>
+      `;
+    });
+    
+    // Change main image
+    function changeImage(src) {
+      document.getElementById('main-image').src = src;
+      document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+        thumb.classList.remove('active');
+        if (thumb.querySelector('img').src === src) {
+          thumb.classList.add('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

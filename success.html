@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed - CodeKart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <span>&#128187;</span> Code<span>Kart</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Success Section -->
+  <section class="success-section">
+    <div class="success-container" id="success-content">
+      <div class="success-icon">&#10004;</div>
+      <h1>Order Confirmed!</h1>
+      <p>Thank you for your purchase. Your order has been received and is being processed.</p>
+      
+      <div class="order-id">
+        <p>Order ID:</p>
+        <span id="order-id">Loading...</span>
+      </div>
+      
+      <div id="success-order-details">
+        <!-- Order details will be loaded dynamically -->
+      </div>
+      
+      <div style="padding: 20px; background: #d4edda; border-radius: 8px; margin-bottom: 30px;">
+        <p style="color: #155724; font-weight: 600;">&#128231; Confirmation email sent!</p>
+        <p style="color: #155724; font-size: 14px;">A download link has been sent to your email address.</p>
+      </div>
+      
+      <div style="display: flex; gap: 15px; justify-content: center;">
+        <a href="dashboard.html" class="btn btn-primary">View My Orders</a>
+        <a href="products.html" class="btn btn-outline">Continue Shopping</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 CodeKart. All rights reserved. | <a href="privacy-policy.html" style="color: #ddd;">Privacy Policy</a> | <a href="terms.html" style="color: #ddd;">Terms of Service</a> | <a href="contact.html" style="color: #ddd;">Contact Us</a> | <a href="faq.html" style="color: #ddd;">FAQ</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

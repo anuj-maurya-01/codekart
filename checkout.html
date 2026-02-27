@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - CodeKart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <span>&#128187;</span> Code<span>Kart</span>
+        </a>
+        <div class="header-actions">
+          <a href="cart.html" class="cart-icon">
+            <span>&#128722;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Checkout Section -->
+  <section class="checkout-section">
+    <div class="container">
+      <h1 style="margin-bottom: 30px;">Checkout</h1>
+      
+      <div class="checkout-grid">
+        <div class="checkout-form">
+          <h2>Billing Information</h2>
+          
+          <form id="checkout-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" required placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" required placeholder="john@example.com">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="+91 9876543210">
+            </div>
+            
+            <div class="form-group">
+              <label for="notes">Additional Notes / Requirements</label>
+              <textarea id="notes" placeholder="Any special requirements or notes for your order..."></textarea>
+            </div>
+            
+            <h3 style="margin: 30px 0 15px;">Payment Information</h3>
+            
+            <!-- QR Code Payment Section -->
+            <div id="qr-payment-section" style="display: none;">
+              <div style="background: #f0fdf4; border: 2px solid #22c55e; border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: center;">
+                <h4 style="color: #16a34a; margin-bottom: 15px;">&#128179; Scan to Pay</h4>
+                <div id="qr-code-display" style="margin-bottom: 15px;">
+                  <!-- QR Code will be displayed here -->
+                </div>
+                <p style="font-size: 14px; color: #166534;">
+                  <strong>Total to Pay: <span id="qr-amount" style="font-size: 18px;">₹0.00</span></strong>
+                </p>
+                <p style="font-size: 12px; color: #166534; margin-top: 10px;">
+                  Scan the QR code using any UPI app (Google Pay, PhonePe, Paytm, etc.)
+                </p>
+              </div>
+              
+              <div class="form-group">
+                <label for="payment-screenshot">Upload Payment Screenshot (Optional)</label>
+                <input type="file" id="payment-screenshot" accept="image/*">
+                <small style="color: var(--gray);">Take a screenshot after successful payment</small>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <p style="color: var(--gray); font-size: 14px;">
+                &#128179; This is a demo checkout. No actual payment will be processed.
+              </p>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              Place Order - <span id="checkout-total">₹0.00</span>
+            </button>
+          </form>
+        </div>
+        
+        <div class="checkout-summary">
+          <h3>Order Summary</h3>
+          
+          <div class="checkout-items" id="checkout-items">
+            <!-- Items will be loaded dynamically -->
+          </div>
+          
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="checkout-subtotal">₹0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>Free</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="checkout-total-display">₹0.00</span>
+          </div>
+          
+          <div style="margin-top: 20px; padding: 15px; background: var(--gray-light); border-radius: 8px;">
+            <p style="font-size: 14px; color: var(--gray);">
+              &#128231; Instant download after purchase<br>
+              &#128259; 30-day money-back guarantee
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>&copy; 2024 CodeKart. All rights reserved. | <a href="privacy-policy.html" style="color: #ddd;">Privacy Policy</a> | <a href="terms.html" style="color: #ddd;">Terms of Service</a> | <a href="contact.html" style="color: #ddd;">Contact Us</a> | <a href="faq.html" style="color: #ddd;">FAQ</a></p>
+    </div>
+  </footer>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2024 CodeKart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

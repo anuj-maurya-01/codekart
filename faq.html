@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - CodeKart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128187;</text></svg>">
+  <style>
+    .faq-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .faq-intro {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 35px;
+    }
+
+    .faq-category {
+      margin-bottom: 28px;
+    }
+
+    .faq-category h2 {
+      margin-bottom: 12px;
+      color: var(--secondary);
+      font-size: 24px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: var(--border-radius-sm);
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      border-color: #cfd5dd;
+    }
+
+    .faq-question {
+      width: 100%;
+      border: none;
+      background: transparent;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+    }
+
+    .faq-question span {
+      font-size: 14px;
+      color: var(--primary);
+      transition: transform 0.25s ease;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 18px;
+      color: var(--gray);
+      border-top: 1px solid var(--gray-light);
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .faq-item.active .faq-question span {
+      transform: rotate(180deg);
+    }
+
+    .faq-cta {
+      text-align: center;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-top: 35px;
+    }
+
+    .faq-cta p {
+      color: var(--gray);
+      margin: 8px 0 20px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .faq-category h2 {
+        font-size: 20px;
+      }
+
+      .faq-question {
+        font-size: 15px;
+        padding: 15px;
+      }
+
+      .faq-answer {
+        padding: 0 15px 15px;
+      }
+
+      .faq-cta {
+        padding: 22px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <span>Need help? Contact us: support@codekart.com</span>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">
+          <span>&#128187;</span> Code<span>Kart</span>
+        </a>
+
+        <button class="mobile-menu-btn">&#9776;</button>
+
+        <form class="search-bar" id="search-form">
+          <input type="text" id="header-search" placeholder="Search projects, technologies...">
+          <button type="submit">&#128269;</button>
+        </form>
+
+        <div class="header-actions">
+          <a href="login.html" id="login-link">
+            <span>&#128100;</span> Login
+          </a>
+          <a href="signup.html" id="signup-link">
+            <span>&#128221;</span> Sign Up
+          </a>
+          <div id="user-menu" style="display: none;">
+            <a href="dashboard.html">
+              <span>&#128100;</span> <span class="user-name">Dashboard</span>
+            </a>
+          </div>
+          <a href="cart.html" class="cart-icon">
+            <span>&#128722;</span>
+            <span class="cart-badge" style="display: none;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <button class="mobile-close-btn">&#10005;</button>
+      <div class="container">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Projects</a></li>
+          <li class="category-dropdown">
+            <a href="#">Categories &#9662;</a>
+            <div class="category-menu">
+              <a href="products.html?category=E-Commerce">E-Commerce</a>
+              <a href="products.html?category=Portfolio">Portfolio</a>
+              <a href="products.html?category=Dashboard">Dashboard</a>
+              <a href="products.html?category=Social">Social</a>
+              <a href="products.html?category=Productivity">Productivity</a>
+            </div>
+          </li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="faq.html" class="active">FAQ</a></li>
+        </ul>
+        <a href="products.html" class="btn btn-primary btn-sm">Browse All Projects</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Frequently Asked Questions</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>FAQ</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="faq-wrap">
+        <p class="faq-intro">Find quick answers about purchases, downloads, support, and account-related questions.</p>
+
+        <div class="faq-category">
+          <h2>General</h2>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">What is CodeKart? <span>&#9660;</span></button>
+            <div class="faq-answer">CodeKart is a marketplace for ready-made coding projects, templates, and applications for developers and students.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">How do I purchase a project? <span>&#9660;</span></button>
+            <div class="faq-answer">Browse projects, add one to cart, complete checkout, and get instant access to your downloadable files.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">What payment methods do you accept? <span>&#9660;</span></button>
+            <div class="faq-answer">We support major cards and commonly available online payment options shown at checkout.</div>
+          </div>
+        </div>
+
+        <div class="faq-category">
+          <h2>Products &amp; Downloads</h2>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">How do I download purchased projects? <span>&#9660;</span></button>
+            <div class="faq-answer">You can download from your order confirmation email or from the orders area in your account dashboard.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">Do projects include source code? <span>&#9660;</span></button>
+            <div class="faq-answer">Yes, all listed projects include editable source code so you can customize and extend as needed.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">How long are downloads available? <span>&#9660;</span></button>
+            <div class="faq-answer">Download availability is shown in your order details. We recommend backing up files right after purchase.</div>
+          </div>
+        </div>
+
+        <div class="faq-category">
+          <h2>Refunds &amp; Support</h2>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">What is your refund policy? <span>&#9660;</span></button>
+            <div class="faq-answer">Refunds are handled according to the policy listed in your order terms. Contact support with your order ID for review.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">How can I get technical support? <span>&#9660;</span></button>
+            <div class="faq-answer">Email support@codekart.com with your order number, issue details, and screenshots for the fastest help.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">I cannot find my download link. What should I do? <span>&#9660;</span></button>
+            <div class="faq-answer">Check spam/junk first, then visit your dashboard orders page. If needed, contact support and include order details.</div>
+          </div>
+        </div>
+
+        <div class="faq-cta">
+          <h3>Still have questions?</h3>
+          <p>Our support team can help with order issues, downloads, billing, and technical questions.</p>
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span>&#128187;</span> Code<span>Kart</span>
+          </a>
+          <p>Your one-stop shop for ready-made coding projects.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li>&#128231; support@codekart.com</li>
+            <li>&#128241; +91 9532156562</li>
+            <li>&#128205; Shantipuram, Phaphamau, Prayagraj, UP, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CodeKart. All rights reserved. | <a href="privacy-policy.html" style="color: #ddd;">Privacy Policy</a> | <a href="terms.html" style="color: #ddd;">Terms of Service</a> | <a href="contact.html" style="color: #ddd;">Contact Us</a> | <a href="faq.html" style="color: #ddd;">FAQ</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
